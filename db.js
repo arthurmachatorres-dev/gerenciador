@@ -1,15 +1,14 @@
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
-
+// Cria pool usando variáveis de ambiente
 const pool = mysql.createPool({
-host: 'localhost',
-user: 'root',
-password: '99156854',
-database: 'gerencia_contas',
-waitForConnections: true,
-connectionLimit: 10,
-queueLimit: 0
+  host: process.env.DB_HOST,       // host do Aiven
+  user: process.env.DB_USER,       // usuário do Aiven
+  password: process.env.DB_PASS,   // senha do Aiven
+  database: process.env.DB_NAME,   // database do Aiven
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
-
 
 module.exports = pool;
